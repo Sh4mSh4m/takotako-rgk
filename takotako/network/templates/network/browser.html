@@ -1,0 +1,178 @@
+{% extends 'network/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+{% load static %}
+
+<body id='global container'>
+  <!-- Display bar -->
+  <div class="card-panel">
+    <button id="btn_status" class="btn pink waves-effect waves-purple">Statuses</button></td>
+    <button id="btn_description" class="btn pink waves-effect waves-purple">Description</button></td>
+    <button id="btn_filter" class="btn pink waves-effect waves-purple">Search Filter</button></td>
+  </div>
+
+  <!-- Filter bar -->
+  <div id="filterForm" class="card-panel" style="display: none">
+    <form id="userForm" class="col s12">
+      {% csrf_token %}
+      <div class="row">
+        <p id="filterFormClose" class="tiny right-align">
+          Close
+          <i class="tiny material-icons prefix">cancel</i>
+        </p>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <i class="material-icons prefix">description</i>
+          <input placeholder="Data" id="description" type="text" class="validate">
+          <label for="description">Description</label>
+        </div>
+        <div class="input-field col s4">
+          <i class="material-icons prefix">power_settings_new</i>
+          <input id="status" type="text" class="validate">
+          <label for="status">L1 Status: up | down</label>
+        </div>
+        <div class="input-field col s4">
+          <i class="material-icons prefix">compare_arrows</i>
+          <input id="protocol" type="text" class="validate">
+          <label for="protocol">L2 Protocol: up | down</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">format_align_left</i>
+          <textarea style="font-size: 12px" id="running" class="materialize-textarea validate"></textarea>
+          <label for="running">Interface running config - exact match</label>
+        </div>
+      </div>
+      <div>
+        <button id="subFilter" class="btn pink waves-effect waves-purple" type='submit'>Filter</button></td>
+      </div>
+    </form>
+  </div>
+
+  <div>
+
+
+    {% comment %}
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    WARNING SWITCH MATCHES HOSTNAME in views and inventory pool
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    The following builds switch representations from the inventory.pool JSON
+    Modules / switch members are listed to ease loop construction
+    {% endcomment%}
+    {% for switches in switches_list %}
+    {% for switch, specs in switches.items %}
+    <div class="card-panel">
+      {% csrf_token %}
+      <p>{{ switch }}</p>
+      {% for module in specs.modules %}
+      <table id='{{ switch }}'>
+        <tbody>
+          <tr>
+            {% for interface, spec in specs.interfaces.items %}
+            {% if 'odd' in spec.row and module in spec.module %}
+            {% if switch in selection and interface in selection|keyvalue:switch %}
+            <td id='{{ switch }}&&{{ interface }}_name' class='int_name_selected'>{{ interface }}</td>
+            {% else %}
+            <td id='{{ switch }}&&{{ interface }}_name' class='int_name'>{{ interface }}</td>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+          </tr>
+          <tr class='odd'>
+            {% for interface, spec in specs.interfaces.items %}
+            {% if 'odd' in spec.row and module in spec.module %}
+            <td id='{{ switch }}&&{{ interface }}' class='ports'>
+              {% if switch in selection and interface in selection|keyvalue:switch %}
+              <div class='btooltip top_selected'>
+                {% else %}
+                <div class='btooltip top'>
+                  {% endif %}
+                  <svg class='{{ spec.status }}{{ spec.protocol }}' width="25" height="20" viewBox="0 0 30 25"
+                    preserveAspectRatio="none" class="Nodes">
+                    <polygon points="5,9 9,9 9,6 12,6 12,3 18,3 18,6 21,6 21,9 25,9 25,21, 5,21"></polygon>
+                  </svg>
+                  <span class="btooltiptext">{{ spec.status }}/{{ spec.protocol }}</span>
+                </div>
+            </td>
+            {% endif %}
+            {% endfor %}
+          </tr>
+          <tr class='even'>
+            {% for interface, spec in specs.interfaces.items %}
+            {% if 'even' in spec.row and module in spec.module %}
+            <td id='{{ switch }}&&{{ interface }}' class='ports'>
+              {% if switch in selection and interface in selection|keyvalue:switch %}
+              <div class='btooltip down_selected'>
+                {% else %}
+                <div class='btooltip down'>
+                  {% endif %}
+                  <svg class='{{ spec.status }}{{ spec.protocol }}' width="25" height="20" viewBox="0 0 30 25"
+                    preserveAspectRatio="none" class="NodePort">
+                    <polygon points="5,9 9,9 9,6 12,6 12,3 18,3 18,6 21,6 21,9 25,9 25,21, 5,21"></polygon>
+                  </svg>
+                  <span class="btooltiptext">{{ spec.status }}/{{ spec.protocol }}</span>
+                </div>
+            </td>
+            {% endif %}
+            {% endfor %}
+          </tr>
+          <tr>
+            {% for interface, spec in specs.interfaces.items %}
+            {% if 'even' in spec.row and module in spec.module %}
+            {% if switch in selection and interface in selection|keyvalue:switch %}
+            <td id='{{ switch }}&&{{ interface }}_name' class='int_name_selected'>{{ interface }}</td>
+            {% else %}
+            <td id='{{ switch }}&&{{ interface }}_name' class='int_name'>{{ interface }}</td>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+      <pre
+        id='{{ switch }}&&{{ module }}_result'>Click on above ports to get {{ switch }} module {{ module }} interface running config</pre>
+      <p></p>
+      {% endfor %}
+    </div>
+
+    <div class="col s12 m3 l3 running">
+      <pre id='switch running'>Click here to view switch {{ switch }} global running config</pre>
+      <p></p>
+    </div>
+
+    {% endfor %}
+
+    {% endfor %}
+
+  </div>
+
+
+
+
+
+  <div class="pagination">
+    <span class="step-links">
+      {% if switches_list.has_previous %}
+      <a href="?page=1">&laquo; first</a>
+      <a href="?page={{ switches_list.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        Page {{ switches_list.number }} of {{ switches_list.paginator.num_pages }}.
+      </span>
+
+      {% if switches_list.has_next %}
+      <a href="?page={{ switches_list.next_page_number }}">next</a>
+      <a href="?page={{ switches_list.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="{% static 'network/js/ajax.js' %}"></script>
+  <script src="{% static 'network/js/browser_req.js' %}"></script>
+
+  {% endblock %}

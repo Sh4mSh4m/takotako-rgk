@@ -1,0 +1,14 @@
+---
+home-sw01:
+  data:
+    location: fontenay-city
+    model: '2960'
+    option1: to-keep
+    option2: blue
+  groups:
+  - home
+  hostname: 192.168.128.100
+  password: cisco
+  platform: cisco_ios
+  username: admin
+

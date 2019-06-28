@@ -1,0 +1,288 @@
+interface GigabitEthernet1/0/1
+ description Bornes DECT IP
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 300
+ no logging event link-status
+ no logging event power-inline-status
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ no snmp trap link-status
+ mls qos trust cos
+ auto qos trust
+!
+interface GigabitEthernet1/0/2
+ description Bornes DECT IP
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 300
+ no logging event link-status
+ no logging event power-inline-status
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ no snmp trap link-status
+ mls qos trust cos
+ auto qos trust
+!
+interface GigabitEthernet1/0/3
+ description Bornes DECT IP
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 300
+ no logging event link-status
+ no logging event power-inline-status
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ no snmp trap link-status
+ mls qos trust cos
+ auto qos trust
+!
+interface GigabitEthernet1/0/4
+ description Port banalise ToIP et DATA
+ switchport mode access
+ switchport access vlan 100
+ switchport voice vlan 300
+ no logging event link-status
+ no snmp trap link-status
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/5
+ switchport access vlan 86
+ description NEP TPV-V86
+ switchport port-security
+ no logging event link-status
+ no logging event power-inline-status
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/6
+ switchport access vlan 97
+ description DMZ-Encaissement-Salle-Recette
+ switchport port-security
+ no logging event link-status
+ no logging event power-inline-status
+ no snmp trap link-status
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/7
+ switchport access vlan 100
+ switchport mode access
+ switchport voice vlan 300
+ no logging event link-status
+ no snmp trap link-status
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/8
+ switchport access vlan 86
+ description NEP TPV-V86
+ no logging event link-status
+ no logging event power-inline-status
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/9
+ switchport access vlan 97
+ description DMZ-Encaissement-Salle-Recette
+ no logging event link-status
+ no logging event power-inline-status
+ no snmp trap link-status
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/10
+ description NEP TPV-V86
+ switchport access vlan 86
+ switchport mode access
+ switchport port-security
+ no logging event link-status
+ no logging event power-inline-status
+ no snmp trap link-status
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/1
+ description Port banalise ToIP et DATA
+ switchport access vlan 105
+ switchport mode access
+ switchport voice vlan 300
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ no logging event link-status
+ no logging event power-inline-status
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ no snmp trap link-status
+ mls qos trust cos
+ auto qos trust
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/2
+ description Port banalise ToIP et DATA
+ switchport access vlan 105
+ switchport mode access
+ switchport voice vlan 300
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ no logging event link-status
+ no logging event power-inline-status
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ no snmp trap link-status
+ mls qos trust cos
+ auto qos trust
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/3
+ description Port banalise ToIP et DATA
+ switchport access vlan 105
+ switchport mode access
+ switchport voice vlan 300
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ no logging event link-status
+ no logging event power-inline-status
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ no snmp trap link-status
+ mls qos trust cos
+ auto qos trust
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/4
+ description Port banalise ToIP et DATA
+ switchport access vlan 105
+ switchport mode access
+ switchport voice vlan 300
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ no logging event link-status
+ no logging event power-inline-status
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ no snmp trap link-status
+ mls qos trust cos
+ auto qos trust
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/5
+ description Port banalise ToIP et DATA
+ switchport access vlan 105
+ switchport mode access
+ switchport voice vlan 300
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ no logging event link-status
+ no logging event power-inline-status
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ no snmp trap link-status
+ mls qos trust cos
+ auto qos trust
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/6
+ description Port banalise ToIP et DATA
+ switchport access vlan 105
+ switchport mode access
+ switchport voice vlan 300
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ no logging event link-status
+ no logging event power-inline-status
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ no snmp trap link-status
+ mls qos trust cos
+ auto qos trust
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/7
+ description Port banalise ToIP et DATA
+ switchport access vlan 105
+ switchport mode access
+ switchport voice vlan 300
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ no logging event link-status
+ no logging event power-inline-status
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ no snmp trap link-status
+ mls qos trust cos
+ auto qos trust
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/8
+ description Port banalise ToIP et DATA
+ switchport access vlan 105
+ switchport mode access
+ switchport voice vlan 300
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ no logging event link-status
+ no logging event power-inline-status
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ no snmp trap link-status
+ mls qos trust cos
+ auto qos trust
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/9
+ description Port banalise ToIP et DATA
+ switchport access vlan 105
+ switchport mode access
+ switchport voice vlan 300
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ no logging event link-status
+ no logging event power-inline-status
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ no snmp trap link-status
+ mls qos trust cos
+ auto qos trust
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0/10
+ description Port banalise ToIP et DATA
+ switchport access vlan 105
+ switchport mode access
+ switchport voice vlan 300
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging time 5
+ switchport port-security aging type inactivity
+ switchport port-security
+ no logging event link-status
+ no logging event power-inline-status
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ no snmp trap link-status
+ mls qos trust cos
+ auto qos trust
+ spanning-tree bpduguard enable
+!

@@ -1,0 +1,207 @@
+{% extends 'network/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+    <div class="section">
+
+        <!--   Icon Section   -->
+        <div class="row">
+            <div class="col s12 m3">
+                <div class="icon-block">
+                    <h2 class="center pink-text"><i class="material-icons">assignment</i></h2>
+                    <h5 class="center">Inventory</h5>
+
+                    <p class="light">Inventory allows you to visualize quickly hosts and interfaces
+                        that are loaded in the application.</p>
+                </div>
+            </div>
+
+            <div class="col s12 m3">
+                <div class="icon-block">
+                    <h2 class="center pink-text"><i class="material-icons">photo_camera</i></h2>
+                    <h5 class="center">Snapshot</h5>
+
+                    <p class="light">Take a snapshot of your inventory such as interface
+                        status, description, running-configuration and other details regarding
+                        your network devices.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col s12 m3">
+                <div class="icon-block">
+                    <h2 class="center pink-text"><i class="material-icons">search</i></h2>
+                    <h5 class="center">Search</h5>
+
+                    <p class="light">Browse your inventory stacks and visualize interfaces, from there
+                        you can also apply filters as to select hosts and interfaces matching the filters
+                        applied.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col s12 m3">
+                <div class="icon-block">
+                    <h2 class="center pink-text"><i class="material-icons">edit</i></h2>
+                    <h5 class="center">Push changes</h5>
+
+                    <p class="light">Apply changes on your selected hosts and interfaces</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% if pool is None %}
+
+<div class="card-panel">
+
+    <div class="center" id="openButton">
+        <h4 class="center"><i class="material-icons">report</i> Inventory not found</h4>
+        <p>&nbsp</p>
+
+        <p>Please load a csv, download this template or load a '*.tki' file to get started</p>
+        <button class="btn pink waves-effect waves-purple">Let's load stuff up</button>
+        </td>
+    </div>
+
+    <div class="center">
+        <div class="form-popup" id="myForm" style="display: none">
+            <form id="form_csv" action="" method="post" enctype="multipart/form-data" class="form-container">
+                {% csrf_token %}
+                <div class="file-field input-field">
+                    <div class="btn pink">
+                        <span>Inventory file</span>
+                        <input type="file" name="inv_file" id="inv_file" required="True">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text"
+                            placeholder="SELECT THE .CSV or .TKI FILE TO UPLOAD">
+                    </div>
+                </div>
+                <button id="uploadButton" class="btn pink waves-effect waves-purple" type="submit">Upload</button></td>
+            </form>
+        </div>
+        <div id="progressBar" class="progress" style=" display: none">
+            <div class="indeterminate"></div>
+        </div>
+    </div>
+
+</div>
+
+
+{% else %}
+
+<div id="inventory_bar" class="card-panel center">
+    <button id="reloadButton" class="btn pink waves-effect waves-purple">Load new inventory</button></td>
+</div>
+
+<div class="center">
+
+    <div class="form-popup" id="myForm" style="display: none">
+        <form id="form_csv" action="" method="post" enctype="multipart/form-data" class="form-container">
+            {% csrf_token %}
+            <div class="file-field input-field">
+                <div class="btn pink">
+                    <span>Inventory file</span>
+                    <input type="file" name="inv_file" id="inv_file" required="True">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="SELECT THE .CSV or .TKI FILE TO UPLOAD">
+                </div>
+            </div>
+            <button id="uploadButton" class="btn pink waves-effect waves-purple" type="submit">Upload</button></td>
+        </form>
+    </div>
+
+    <div id="progressBar" class="progress" style="display: none">
+        <div class="indeterminate"></div>
+    </div>
+
+</div>
+
+
+<div class="row">
+
+    <div class="col s12 m6">
+        <div class="card pink lighten-5">
+            <div class="card-content">
+                <span class="card-title">Inventory loaded</span>
+                {% for host, host_specs in pool.items %}
+                <ul>
+                    {% if host != 'stop' %}
+                    <li>{{ host }}: {{ host_specs.hostname }}</li>
+                    {% else %}
+                    <li>... <a class="pink-text" href="{% url 'network:review' %}">view complete inventory</a></li>
+                    {% endif %}
+                </ul>
+                {% endfor %}
+                {% if failed_pool %}
+                <p>You have failed hosts</p>
+                {% endif %}
+            </div>
+            <div class="card-action pink-text">
+                {% if pool != none %}
+                <a class="pink-text" href="{% url 'network:snapshot' %}">Snapshot this</a>
+                {% endif %}
+                {% if failed_pool %}
+                <a class="pink-text" href="{% url 'network:review' %}">Review inventory</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12 m6">
+        <div class="card pink lighten-5">
+            {% if selection == None %}
+            <div class="card-content">
+                <span class="card-title">Selection not loaded</span>
+                <p>You currently have no selection made on this inventory.</p>
+            </div>
+            <div class="card-action">
+                <a class="pink-text" href="#">Set changes</a>
+            </div>
+            {% else %}
+            <div class="card-content">
+                <span class="card-title">Selection loaded</span>
+                {% for host, int_list in selection.items %}
+                <ul>
+                    {% if host != 'stop' %}
+                    <li>{{ host }}: {{ int_list }}</li>
+                    {% else %}
+                    <li>... <a class="pink-text" href="{% url 'network:review' %}">view complete selection</a></li>
+                    {% endif %}
+                </ul>
+                {% endfor %}
+            </div>
+            <div class="card-action pink-text">
+                {% if selection != none %}
+                <a class="pink-text" href="{% url 'network:config' %}">Operate a change</a>
+                <a class="pink-text" href="{% url 'network:browser' %}">Review selection</a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div id="inventory_bar" class="card-panel center">
+    <a href="{% url 'network:export' %}"><button id="exportButton" class="btn pink waves-effect waves-purple">Export
+            inventory and
+            selection</button></a></td>
+</div>
+
+{% endif %}
+
+<script src="{% static 'network/js/ajax.js' %}"></script>
+<script src="{% static 'network/js/inventory_req.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+{% endblock %}

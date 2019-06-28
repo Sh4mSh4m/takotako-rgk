@@ -1,0 +1,48 @@
+{% extends 'network/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+{% load static %}
+
+<body>
+
+  <form id="shoot">
+    {% csrf_token %}
+    <div>
+      <input type="checkbox" id="box_description" class="box" value="description" checked>
+      <label style="font-size: 12px" for="box_description">Collects interface description</label>
+    </div>
+    <div>
+      <input type="checkbox" id="box_running" class="box" value="running">
+      <label style="font-size: 12px" for="box_running">Collects interface running-config</label>
+    </div>
+    <div>
+      <input type="checkbox" id="box_status" class="box" value="status">
+      <label style="font-size: 12px" for="box_status">Collects interface status</label>
+    </div>
+    <div>
+      <input type="checkbox" id="box_mac" class="box" value="mac">
+      <label style="font-size: 12px" for="box_mac">Collects switch mac tables</label>
+    </div>
+    <div>
+      <input type="checkbox" id="box_cdp_neighbors" class="box" value="neighbors">
+      <label style="font-size: 12px" for="box_cdp_neighbors">Collects switch CDP neighbors</label>
+    </div>
+    <div>
+      <button class="btn pink waves-effect waves-purple" type="submit">Send orders</button>
+    </div>
+  </form>
+
+  <div id="browseReady" style="display: none">
+    <p>inventory is ready to be browsed <a href="{% url 'network:browser' %}">inventory</a> </p>
+  </div>
+  <script>
+    var poll_state_url = "{% url 'network:poll_state' %}"
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="{% static 'network/js/ajax.js' %}"></script>
+  <script src="{% static 'network/js/snapshot_req.js' %}"></script>
+
+</body>
+
+{% endblock %}

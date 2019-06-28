@@ -1,0 +1,56 @@
+{
+    "gi1/0/1": {
+        "status_global": "notconnect",
+        "vlan": "1",
+        "duplex": "auto",
+        "speed": "auto"
+    },
+    "gi1/0/2": {       
+        "status_global": "notconnect",
+        "vlan": "2",
+        "duplex": "auto",
+        "speed": "auto"
+    },
+    "gi1/0/3": {
+        "status_global": "notconnect",
+        "vlan": "1",
+        "duplex": "auto",
+        "speed": "auto"
+    },
+    "gi1/0/4": {
+        "status_global": "notconnect",
+        "vlan": "100",
+        "duplex": "auto",
+        "speed": "auto"
+    },
+    "gi1/0/5": {
+        "status_global": "notconnect",
+        "vlan": "86",
+        "duplex": "auto",
+        "speed": "auto"
+    },
+    "gi1/0/6": {
+        "status_global": "notconnect",
+        "vlan": "97",
+        "duplex": "auto",
+        "speed": "auto"
+    },
+    "gi1/0/7": {
+        "status_global": "notconnect",
+        "vlan": "100",
+        "duplex": "auto",
+        "speed": "auto"
+    },
+    "gi1/0/8": {
+        "status_global": "notconnect",
+        "vlan": "86",
+        "duplex": "auto",
+        "speed": "auto"
+    },
+    "gi1/0/9": {
+        "status_global": "notconnect",
+        "vlan": "97",
+        "duplex": "auto",
+        "speed": "auto"
+    }
+}

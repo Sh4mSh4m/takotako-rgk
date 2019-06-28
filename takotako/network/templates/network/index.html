@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Takotako Ragnarok</title>
+  <meta name="description" content="Takotako Aggregates Merely Everything Remotely EasyPeasy">
+  <link rel="stylesheet" href="{% static 'network/css/takotako.css' %}" />
+</head>
+
+<body class="container" id="global">
+
+  <p>Hello network mate</p>
+
+  <p>BETA - Click down here to load the test inventory</p>
+
+
+  <form id="inventory">
+    {% csrf_token %}
+    <input type="submit" name="submit" value="Check inventory" id="submit">
+  </form>
+
+  <form id="selection">
+    {% csrf_token %}
+    <input type="submit" name="submit" value="Check selection" id="submit">
+  </form>
+
+  <form id="export_task">
+    {% csrf_token %}
+    <input type="text" id="file_name" value="tkinv_{% now 'y-m-d' %}" name="file_name" />
+    <input type="submit" name="submit" value="Let's 'export" id="submit">
+  </form>
+
+  <p>Click <a href="{% url 'network:browser' %}">here</a> to check inv and selection</p>
+
+  <p>Click <a href="{% url 'network:snapshot' %}">here</a> to initiate Nornir</p>
+
+  <pre id='result'></pre>
+
+  <p>Click <a href="{% url 'network:upload' %}">here</a> to upload file</p>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="{% static 'network/js/ajax.js' %}"></script>
+  <script src="{% static 'network/js/inventory_req.js' %}"></script>
+
+</body>
+
+</html>

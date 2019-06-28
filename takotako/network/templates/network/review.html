@@ -1,0 +1,43 @@
+{% extends 'network/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="row">
+    <!-- Pool -->
+    <div class="col s12 m6">
+        <div>
+            {% for location, host in pool.items %}
+            <p>{{ location }}</p>
+            <ul>
+                {% for hostname, ip in host.items %}
+                <li>{{ hostname }}: {{ ip }}</li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Selection -->
+    <div class="col s12 m6">
+        <div>
+            {% for location, host in selection.items %}
+            <p>{{ location }}</p>
+            <ul>
+                {% for hostname, int_list in host.items %}
+                <li>{{ hostname }}: {{ int_list }}</li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+
+
+</div>
+
+<script src="{% static 'network/js/ajax.js' %}"></script>
+<script src="{% static 'network/js/review_req.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+{% endblock %}

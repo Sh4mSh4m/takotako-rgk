@@ -1,0 +1,79 @@
+.btooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.top {
+  border-top: 1px solid black;
+}
+
+.down {
+  border-bottom: 1px solid black;
+}
+
+.top_selected {
+  border-top: 1px solid palevioletred;
+}
+
+.down_selected {
+  border-bottom: 1px solid palevioletred;
+}
+
+.btooltip .btooltiptext {
+  font-size: 12px;
+  visibility: hidden;
+  width: 220px;
+  background-color: #888;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -110px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btooltip .btooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.btooltip:hover .btooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.odd td {
+    text-align: center;
+}
+
+.even td {
+    text-align: center
+}
+
+.int_name {
+  font-size: 8px;
+  text-align: center;
+}
+
+.int_name_selected {
+  font-size: 8px;
+  color: palevioletred;
+  text-align: center;  
+}
+
+
+.switch {
+  max-width: 700px;
+  border: 1px;
+}

@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+autopep8 = "*"
+
+[requires]
+python_version = "3.7"
+
+[packages]
+django = "*"
+nornir = "*"
+requests = "*"
+textfsm = "*"
+parameterized = "*"
+pep8 = "*"
+celery = "*"
+pandas = "*"

@@ -1,0 +1,7 @@
+Value interface ([GFT][iae].{28})
+Value status (.{14})
+Value protocol (.{8})
+Value description (.*)
+
+Start
+  ^${interface} ${status} ${protocol} ${description} -> Record 

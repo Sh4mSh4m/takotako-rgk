@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+    <title>Takotako testpage</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <meta name="description" content="Takotako Aggregates Merely Everything Remotely EasyPeasy">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'network/css/takotako.css' %}" />
+    <link rel="stylesheet" href="{% static 'network/css/browser_global.css' %}" />
+    <link id='css_status' rel="stylesheet" href="{% static 'network/css/browser_status.css' %}" />
+</head>
+
+
+<body class='container'>
+
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <p class="grey-text" style="font-size: 10px; font-style: italic">Takotako demo</p>
+            <nav>
+                <div class="pink lighten-3 nav-wrapper">
+                    <a href="{% url 'network:index' %}" class="brand-logo left"><img style="height: 40px;" src="{% static 'network/img/takotakoRGK.gif' %}">&nbspTakotako RaGnaroK2</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="{% url 'network:index' %}"><i class="material-icons">assignment</i></a></li>
+                        <li><a href="{% url 'network:snapshot' %}"><i class="material-icons">photo_camera</i></a></li>
+                        <li><a href="{% url 'network:browser' %}"><i class="material-icons">search</i></a></li>
+                        <li><a href="{% url 'network:config' %}"><i class="material-icons">edit</i></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+    {% block content %}{% endblock %}
+
+
+    <footer class="page-footer pink lighten-3">
+        <div class="row">
+            <div class="col s12 m6 l6">
+                <h5 class="white-text">&nbspXXXX Networks</h5>
+            </div>
+
+            <div class="col m6 l6">
+                <ul class='right'>
+                    <li><a href="#" class="grey-text text-lighten-4">
+                            Contact</a></li>
+                    <li><a href="#" class="grey-text text-lighten-4">
+                            Privacy and Terms</a></li>
+                    <li><a href="#" class="grey-text text-lighten-4">
+                            User Agreement</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pink lighten-5 footer-copyright">
+            <div class="container">
+                © 2019 Copyright XXXX networks
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

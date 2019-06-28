@@ -1,0 +1,10 @@
+Value interface (Gi\S+)
+Value name (.{18})
+Value status (.{12})
+Value vlan (.{10})
+Value duplex (.{7})
+Value speed (.{7})
+Value type (.*)
+
+Start
+  ^${interface}\s*${name} ${status} ${vlan}${duplex}${speed}${type} -> Record 

@@ -1,0 +1,40 @@
+{% extends 'network/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="summary" class="card-panel">
+    <p>Below your selection of hosts and interfaces. Configurations filled in the following forms will be pushed on
+        hosts and interfaces in the selection</p>
+    <ul>
+        {% for host, interfaces in selection.items %}
+        <li>{{ host }}: {{ interfaces }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Config bar -->
+<div class="card-panel">
+    <form id="configForm" class="col s12">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="input-field center">
+                <i class="material-icons prefix">format_align_left</i>
+                <textarea style="font-size: 12px" id="configRunning" class="materialize-textarea validate"></textarea>
+                <label for="configRunning">Interface running config - exact match</label>
+            </div>
+        </div>
+
+        <div>
+            <button id="subConfig" class="btn pink waves-effect waves-purple" type='submit'>Push config</button></td>
+        </div>
+    </form>
+</div>
+<script>
+    var poll_state_url = "{% url 'network:poll_state' %}"
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="{% static 'network/js/ajax.js' %}"></script>
+<script src="{% static 'network/js/config_req.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,11 @@
+Value type ([GgTtFf][iea][gns][agt]?[bi]?[ig]?[ta]?[b]?[i]?[t]?)
+Value interface (\S+)
+Value List config (.*)
+
+Start
+  ^interface ${type}Ethernet${interface} -> Interface
+
+Interface
+  ^ ${config}
+  ^! -> Record Start
+

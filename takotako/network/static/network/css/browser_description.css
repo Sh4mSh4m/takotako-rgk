@@ -1,0 +1,16 @@
+
+.btooltip .upup {
+  fill: pink
+}
+
+.btooltip .downdown {
+  fill: black
+}
+
+#btn_status {
+  visibility: hidden;
+}
+
+#btn_description {
+  visibility: visible;
+}

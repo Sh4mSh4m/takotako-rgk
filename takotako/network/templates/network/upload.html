@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Takotako Ragnarok</title>
+    <meta name="description" content="Takotako Aggregates Merely Everything Remotely EasyPeasy">
+    <link rel="stylesheet" href="{% static 'network/css/takotako.css' %}" />
+</head>
+
+<body id="global">
+
+    <form id="form_csv" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="inv_file" id="inv_file" required="True">
+        <button type="submit">Upload du scan</button>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+</body>
+
+</html>

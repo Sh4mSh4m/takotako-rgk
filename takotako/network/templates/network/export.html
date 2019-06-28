@@ -1,0 +1,28 @@
+{% extends 'network/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<form id="exportTask">
+    {% csrf_token %}
+    <div class="row">
+
+        <div class="input-field col s4">
+            <i class="material-icons prefix">cloud_download</i>
+            <input id="file_name" type="text" value="tkinv_{% now 'Y-m-d' %}" class="validate">
+            <label for="file_name">file name</label>
+        </div>
+
+    </div>
+
+    <div>
+        <button id="subConfig" class="btn pink waves-effect waves-purple" type='submit'>Let's export</button></td>
+    </div>
+
+</form>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="{% static 'network/js/ajax.js' %}"></script>
+<script src="{% static 'network/js/export_req.js' %}"></script>
+{% endblock %}

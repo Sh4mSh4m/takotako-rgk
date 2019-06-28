@@ -1,0 +1,53 @@
+{
+    "gi1/0/16": {
+        "mac_list": [
+            {"mac": "000a.b82d.10e0", "vlan": "1", "type": "DYNAMIC"}, 
+            {"mac": "0012.80b6.4cd9", "vlan": "1", "type": "DYNAMIC"}, 
+            {"mac": "0014.6915.4100", "vlan": "1", "type": "DYNAMIC"}, 
+            {"mac": "0018.b921.9200", "vlan": "1", "type": "DYNAMIC"}, 
+            {"mac": "0018.b974.528f", "vlan": "1", "type": "DYNAMIC"}, 
+            {"mac": "0018.b974.528f", "vlan": "4", "type": "DYNAMIC"}, 
+            {"mac": "0018.b974.528f", "vlan": "45", "type": "DYNAMIC"}, 
+            {"mac": "0018.b945.f781", "vlan": "56", "type": "DYNAMIC"}, 
+            {"mac": "0018.b974.528f", "vlan": "56", "type": "DYNAMIC"}, 
+            {"mac": "0018.b974.528f", "vlan": "6", "type": "DYNAMIC"}
+        ]
+    },
+    "gi1/0/3": {
+        "mac_list": [{"mac": "0012.80b6.4cd8", "vlan": "1", "type": "DYNAMIC"}]
+    },
+    "gi1/0/1": {
+        "mac_list": [{"mac": "0018.b921.9278", "vlan": "1", "type": "DYNAMIC"}]
+    },
+    "gi1/0/13": {
+        "mac_list": [
+            {"mac": "0019.0617.660f", "vlan": "1", "type": "DYNAMIC"}, 
+            {"mac": "0019.069c.80e0", "vlan": "6", "type": "DYNAMIC"}]
+    },
+    "gi1/0/14": {
+        "mac_list": [
+            {"mac": "0019.0617.6610", "vlan": "1", "type": "DYNAMIC"}]
+    },
+    "gi1/0/15": {
+        "mac_list": [
+            {"mac": "0019.0617.6611", "vlan": "1", "type": "DYNAMIC"}]
+    },
+    "gi1/0/19": {
+        "mac_list": [
+            {"mac": "001b.d450.970f", "vlan": "1", "type": "DYNAMIC"}, 
+            {"mac": "0018.b945.d5a9", "vlan": "45", "type": "DYNAMIC"}, 
+            {"mac": "0019.069c.80e1", "vlan": "56", "type": "DYNAMIC"}]
+    },
+    "gi1/0/20": {
+        "mac_list": [
+            {"mac": "001b.d450.9710", "vlan": "1", "type": "DYNAMIC"}]
+    },
+    "gi1/0/21": {
+        "mac_list": [
+            {"mac": "001b.d450.9711", "vlan": "1", "type": "DYNAMIC"}]
+    },
+    "gi1/0/5": {
+        "mac_list": [
+            {"mac": "0018.b945.f780", "vlan": "45", "type": "DYNAMIC"}]
+    }
+}
