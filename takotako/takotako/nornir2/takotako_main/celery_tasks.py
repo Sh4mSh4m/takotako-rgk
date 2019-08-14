@@ -38,7 +38,6 @@ def orchestrate_simple(inv_pool, order_list):
             # 'neighbors': show_cdp_neighbors
         }
         task_chosen = task_map[order]
-        # rdb.set_trace()
         nr.run(task=task_chosen, inventory_pool=inv_pool)
     return inv_pool
 

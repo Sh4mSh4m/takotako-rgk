@@ -1,5 +1,5 @@
 ---
-home-sw01:
+NXP_test.fpr:
   data:
     location: fontenay-city
     model: '2960'
@@ -7,7 +7,7 @@ home-sw01:
     option2: blue
   groups:
   - home
-  hostname: 192.168.128.100
+  hostname: 172.20.13.102
   password: cisco
   platform: cisco_ios
   username: admin

@@ -4,6 +4,7 @@
 from nornir.plugins.tasks.networking import netmiko_send_command
 from takotako.nornir2.tasks_parser.parsers import parsesShowIntDesc, parsesShowRunInt
 from takotako.nornir2.tasks_parser.task_support import detail
+from celery.contrib import rdb
 
 
 def show_interface_description(task, inventory):
@@ -56,7 +57,7 @@ def show_interface_description2(task, inventory_pool):
     index = 0
 
     cmd_string = f"show interface description"
-    task.run(task=netmiko_send_command, command_string=cmd_string)
+    task.run(task=netmiko_send_command, command_string=cmd_string, delay_factor=10)
 
     output = task.results[index].result
     hostname = task.host.name

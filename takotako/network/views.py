@@ -49,6 +49,8 @@ def shortens(inv):
     filtered_selection = {}
     if 'failed_lines' in inv.pool:
         failed_pool = True
+    else:
+        failed_pool = False
     for host in inv.pool:
         if host != 'failed_lines':
             filtered_pool.update({host: inv.pool[host]})
@@ -72,7 +74,7 @@ def sorts_for_review(inv):
     - pool per location with host names and ip (hostname key)
     - selection per location with host and interfaces
     """
-    failed_lines = inv.pool['failed_lines']
+    failed_lines = inv.pool.get('failed_lines',{})
     sorted_pool = {}
     sorted_selection = {}
     for host, specs in inv.pool.items():
